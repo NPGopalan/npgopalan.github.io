@@ -7,7 +7,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <style>
+        p.signature {
+            font-family: 'Allura', cursive; /* Specify the signature-style font */
+            font-size: 18px; /* Adjust font size as needed */
+            line-height: 1.6; /* Adjust line height for readability */
+        }
+		h2	{color: rgb(0,0, 200); font-style: italic;}
+        
+        @media print {
+            .nav-tabs, .nav-item {
+                display: none !important; /* Hide tab navigation */
+            }
+            .tab-content {
+                padding: 0; /* Remove padding for printing */
+            }
+            .tab-pane {
+                display: block !important; 
+				visibility: visible; /* Ensure all tab panes are visible */
+				height: auto; /* Ensure auto height for printed content */
+            }
+			.table-header {
+                display: table-header-group; /* Ensures header is repeated */
+            }
+			#visitor {display: none;} 
+        }
+    </style>
 </head>
 <body  style='margin-top: -50px;'> 
     <div class="container mt-5"> 
@@ -547,11 +573,50 @@
 
 			</div>
         </div>
+     
+
+   <hr id="visitor"/>
+		
+		
+		<!-- BEGIN: Powered by Supercounters.com -->
+ <h2 id="visitor">Visitor # <script type="text/javascript" src="//widget.supercounters.com/ssl/hit.js"></script><script type="text/javascript">sc_hit(1693645, Math.floor(Math.random() * 100) + 1 ,5);</script>
+ 
+<!-- END: Powered by Supercounters.com -->
+<!-- BEGIN: Powered by Supercounters.com -->
+ <script type="text/javascript" src="//widget.supercounters.com/ssl/map.js"></script><script type="text/javascript">var sc_map_var = sc_map_var || [];sc_map(1693647,"112288","ff0000",56)</script>
+ </h2>
+<!-- END: Powered by Supercounters.com -->
+
     </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		function getTodayDate() {
+				var today = new Date();
+				var year = today.getFullYear();
+				var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+				var day = String(today.getDate()).padStart(2, '0');
+				return day+ '-' + month+ '-' +year ;
+			}
+        // Function to show all tab panes when printing
+        function showTabPanesForPrint() {
+            var tabPanes = document.querySelectorAll('.tab-pane');
+            tabPanes.forEach(function(pane) {
+                pane.classList.add('show', 'active');
+            });
+        }
+
+        // Wait for document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener for before print event
+            window.addEventListener('beforeprint', function() {
+                showTabPanesForPrint();
+            });
+        });
+		document.getElementById('todaysDate').textContent = getTodayDate();
+    </script>
 </body>
 </html>
